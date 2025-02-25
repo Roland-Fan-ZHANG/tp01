@@ -3,7 +3,8 @@ package fr.uge.dom;
 import java.util.*;
 import java.util.stream.Collectors;
 
-final class DOMElement implements DOMNode {
+final class
+DOMElement implements DOMNode {
     private final String name;
     private final DOMDocument parent;
     private final Map<String, Object> attributes;
@@ -52,7 +53,9 @@ final class DOMElement implements DOMNode {
         var attributesTag = attributes.entrySet().stream()
                 .map(tag -> " " + tag.getKey() + "=\"" + tag.getValue() + "\"")
                 .collect(Collectors.joining());
-        var childrenStr = children.stream().map(DOMNode::toString).collect(Collectors.joining());
+        var childrenStr = children.stream()
+                .map(DOMNode::toString)
+                .collect(Collectors.joining());
         return "<" + name + attributesTag + ">" + childrenStr + "</" + name + ">";
     }
 }
