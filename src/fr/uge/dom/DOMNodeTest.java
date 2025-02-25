@@ -482,7 +482,7 @@ public class DOMNodeTest {
     }
   }
 
-/*
+
   @Nested
   public class Q8 {
     @Test
@@ -502,7 +502,7 @@ public class DOMNodeTest {
     }
   }
 
-
+/*
   @Nested
   public class Q9 {
     @Test

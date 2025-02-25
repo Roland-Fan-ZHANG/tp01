@@ -9,6 +9,7 @@ DOMElement implements DOMNode {
     private final DOMDocument parent;
     private final Map<String, Object> attributes;
     private final List<DOMNode> children;
+    private String cache = "";
 
     DOMElement(DOMDocument parent, String name, Map<String, Object> attributes) {
         Objects.requireNonNull(name);
@@ -38,6 +39,7 @@ DOMElement implements DOMNode {
                     throw new IllegalStateException("Child must belong to the same document as the parent.");
                 }
                 children.add(child);
+                cache = "";
             }
             default -> throw new IllegalArgumentException("Only DOMElement instances can be added.");
         }
@@ -50,12 +52,15 @@ DOMElement implements DOMNode {
 
     @Override
     public String toString() {
-        var attributesTag = attributes.entrySet().stream()
-                .map(tag -> " " + tag.getKey() + "=\"" + tag.getValue() + "\"")
-                .collect(Collectors.joining());
-        var childrenStr = children.stream()
-                .map(DOMNode::toString)
-                .collect(Collectors.joining());
-        return "<" + name + attributesTag + ">" + childrenStr + "</" + name + ">";
+        if(cache.isEmpty()){
+            var attributesTag = attributes.entrySet().stream()
+                    .map(tag -> " " + tag.getKey() + "=\"" + tag.getValue() + "\"")
+                    .collect(Collectors.joining());
+            var childrenStr = children.stream()
+                    .map(DOMNode::toString)
+                    .collect(Collectors.joining());
+            cache = "<" + name + attributesTag + ">" + childrenStr + "</" + name + ">";
+        }
+        return cache;
     }
 }
