@@ -14,8 +14,12 @@ public class Main {
 //        System.out.println(node.name());  // div
 //        System.out.println(node.attributes());  // {color=red, visible=true}
         // Q3
+//        var document = new DOMDocument();
+//        var node = document.createElement("div", Map.of("foo", "bar"));
+//        System.out.println(node); // <div foo="bar"></div>
+        // Q4
         var document = new DOMDocument();
-        var node = document.createElement("div", Map.of("foo", "bar"));
-        System.out.println(node); // <div foo="bar"></div>
+        var node = document.createElement("div", Map.of("id", "foo42"));
+        System.out.println(document.getElementById("foo42"));  // <div id="foo42"></div>
     }
 }
