@@ -35,11 +35,11 @@ public class Main {
 //        System.out.println(parent);  // <foo><bar></bar></foo>
         // Q7
         // Q8
-        var document = new DOMDocument();
-        var child = document.createElement("bar");
-        var parent1 = document.createElement("parent1");
-        var parent2 = document.createElement("parent2");
-        parent1.appendChild(child);
-        parent2.appendChild(child);
+//        var document = new DOMDocument();
+//        var child = document.createElement("bar");
+//        var parent1 = document.createElement("parent1");
+//        var parent2 = document.createElement("parent2");
+//        parent1.appendChild(child);
+//        parent2.appendChild(child);
     }
 }

@@ -3,13 +3,13 @@ package fr.uge.dom;
 import java.util.*;
 import java.util.stream.Collectors;
 
-final class
-DOMElement implements DOMNode {
+final class DOMElement implements DOMNode {
     private final String name;
     private final DOMDocument parent;
     private final Map<String, Object> attributes;
     private final List<DOMNode> children;
     private String cache = "";
+    private DOMElement parentElement = null;
 
     DOMElement(DOMDocument parent, String name, Map<String, Object> attributes) {
         Objects.requireNonNull(name);
@@ -38,10 +38,19 @@ DOMElement implements DOMNode {
                 if (childElement.parent != this.parent) {
                     throw new IllegalStateException("Child must belong to the same document as the parent.");
                 }
-                children.add(child);
+                detachFromPreviousParent(childElement);
+                children.add(childElement);
+                childElement.parentElement = this;
                 cache = "";
             }
             default -> throw new IllegalArgumentException("Only DOMElement instances can be added.");
+        }
+    }
+
+    private void detachFromPreviousParent(DOMElement childElement) {
+        if (childElement.parentElement != null) {
+            childElement.parentElement.children.remove(childElement);
+            childElement.parentElement.cache = "";
         }
     }
 
@@ -52,7 +61,7 @@ DOMElement implements DOMNode {
 
     @Override
     public String toString() {
-        if(cache.isEmpty()){
+        if (cache.isEmpty()) {
             var attributesTag = attributes.entrySet().stream()
                     .map(tag -> " " + tag.getKey() + "=\"" + tag.getValue() + "\"")
                     .collect(Collectors.joining());
