@@ -2,6 +2,7 @@ package fr.uge.dom;
 
 import java.util.Map;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 final class DOMElement implements DOMNode{
     private final String name;
@@ -24,5 +25,15 @@ final class DOMElement implements DOMNode{
     @Override
     public Map<String, Object> attributes(){
         return attributes;
+    }
+
+    @Override
+    public String toString(){
+        var attributesTag = attributes.entrySet().stream()
+                .map(tag -> " " + tag.getKey() + "=\"" + tag.getValue() + "\"")
+                .collect(Collectors.joining());
+        var openingTag = "<" + name + attributesTag + ">";
+        var closingTag = "</" + name + ">";
+        return openingTag + closingTag;
     }
 }

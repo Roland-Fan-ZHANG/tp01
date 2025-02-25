@@ -9,9 +9,13 @@ public class Main {
 //         DOMNode node = document.createElement("div");
 //         System.out.println(node.name());  // div
         // Q2
+//        var document = new DOMDocument();
+//        var node = document.createElement("div", Map.of("color", "red", "visible", true));
+//        System.out.println(node.name());  // div
+//        System.out.println(node.attributes());  // {color=red, visible=true}
+        // Q3
         var document = new DOMDocument();
-        var node = document.createElement("div", Map.of("color", "red", "visible", true));
-        System.out.println(node.name());  // div
-        System.out.println(node.attributes());  // {color=red, visible=true}
+        var node = document.createElement("div", Map.of("foo", "bar"));
+        System.out.println(node); // <div foo="bar"></div>
     }
 }

@@ -217,7 +217,7 @@ public class DOMNodeTest {
       );
     }
   }
-/*
+
   @Nested
   public class Q3 {
     @Test
@@ -281,7 +281,7 @@ public class DOMNodeTest {
     }
   }
 
-
+/*
   @Nested
   public class Q4 {
     @Test
