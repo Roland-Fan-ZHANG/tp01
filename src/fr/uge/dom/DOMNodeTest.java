@@ -134,7 +134,7 @@ public class DOMNodeTest {
       assertTrue(Set.of("createElement", "getElementById").containsAll(methods), "" + methods);
     }
   }
-/*
+
   @Nested
   public class Q2 {
     @Test
@@ -217,7 +217,7 @@ public class DOMNodeTest {
       );
     }
   }
-
+/*
   @Nested
   public class Q3 {
     @Test
