@@ -18,8 +18,15 @@ public class Main {
 //        var node = document.createElement("div", Map.of("foo", "bar"));
 //        System.out.println(node); // <div foo="bar"></div>
         // Q4
+//        var document = new DOMDocument();
+//        var node = document.createElement("div", Map.of("id", "foo42"));
+//        System.out.println(document.getElementById("foo42"));  // <div id="foo42"></div>
+        // Q5
         var document = new DOMDocument();
-        var node = document.createElement("div", Map.of("id", "foo42"));
-        System.out.println(document.getElementById("foo42"));  // <div id="foo42"></div>
+        var parent = document.createElement("foo");
+        var child = document.createElement("bar");
+        parent.appendChild(child);
+        System.out.println(parent.children());  // <bar></bar>
+        // Q6
     }
 }

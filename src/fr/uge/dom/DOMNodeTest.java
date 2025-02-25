@@ -342,18 +342,18 @@ public class DOMNodeTest {
     }
   }
 
-/*
+
   @Nested
   public class Q5 {
-    @Test
-    public void appendChild() {
-      var document = new DOMDocument();
-      var parent = document.createElement("foo");
-      var child = document.createElement("bar");
-      parent.appendChild(child);
+      @Test
+      public void appendChild() {
+        var document = new DOMDocument();
+        var parent = document.createElement("foo");
+        var child = document.createElement("bar");
+        parent.appendChild(child);
 
-      assertEquals(List.of(child), parent.children());
-    }
+        assertEquals(List.of(child), parent.children());
+      }
 
     @Test
     public void appendChildren() {
@@ -406,7 +406,7 @@ public class DOMNodeTest {
     }
   }
 
-
+/*
   @Nested
   public class Q6 {
     @Test
